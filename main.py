@@ -1,4 +1,3 @@
-# Créé par crosk, le 21/01/2022 en Python 3.7
 import random
 
 ################################################################################
@@ -109,12 +108,20 @@ def ligne_jouee(tab, col):
 def joueur_joue(tab):
     """
     On suppose que c'est un joueur qui ne commet pas d'erreur
-    dans le sens : ne pas faire de faute de frappe au clavier,
-    choisir une colonne non pleine
+    dans le sens : choisir une colonne non pleine
     """
     col = eval(input("Choisissez une colonne"))
-    line = ligne_jouee(tab, col)
-    tab[line][col-1] = 1
+    if 1<= col <=7:
+        line = ligne_jouee(tab, col)
+        tab[line][col-1] = 1
+    else:
+        print("Veuillez choisir une colonne valide !")
+        joueur_joue(tab)
+
+def evaluer_jeu(tab):
+    pass
+    #donne un score d'évaluation de la grille sous la forme d'une matrice d'adjacence, fonction permettant à l'ordinateur de calculer les coups
+    #en avance.
 
 def ordinateur_joue(tab):
     ##jeu aléatoire
@@ -132,6 +139,7 @@ def ordinateur_joue(tab):
     line = ligne_jouee(tab, col+1)
     tab[line][col] = -1
     ##jeu réflechi:
+    #   l'ordinateur devra utiliser la fonction evaluer_jeu(tab) pour pouvoir effectuer ses coups et agir de manière intelligente.
 
 
 ################################################################################
